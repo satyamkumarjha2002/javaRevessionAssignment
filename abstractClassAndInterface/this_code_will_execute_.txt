@@ -1,0 +1,147 @@
+PART1:-
+1.
+abstract class AbstractAlgorithm{
+	abstract void steps();
+}
+
+class Algorithm1 extends AbstractAlgorithm{
+}
+
+ans:- This code will give a compile time error because we are extending an abstract class to the a Class and abastract class
+has one abstract method we have to override that method and provide body to it.
+
+2.
+
+abstract class AbstractAlgorithm{
+	abstract void steps();
+}
+
+abstract class Algorithm1 extends AbstractAlgorithm{
+}
+
+ans:- This code will work because here no need to override that method that are peresent in parent abstract class because the child class is also abstract.
+
+3.
+abstract class AbstractAlgorithm{
+	private int stepCount;
+}
+
+ans:- Yes this code will work because we can make any type of variable inside a abstract that's why this will no give any types of Exceptions.
+
+4.
+abstract class AbstractAlgorithm{
+	private int stepCount;
+	public int getStepCount(){
+		return stepCount;
+	}
+}
+
+ans:- Yes this code will will work because we are allowed to defince a concreate method inside a abstract class.
+
+PART2:-
+
+1.
+interface Interface1{
+	void method1();
+}
+
+interface Interface2 extends Interface1{
+	void method2()
+}
+
+ans:- Yes this code will work because we a interface is extending another interface.
+
+2.
+interface Interface1{
+	void method1();
+}
+
+interface Interface2 extends Interface1{
+	void method2()
+}
+
+interface Implementation implements Interface2{
+	void method2()
+}
+
+ans:- This code will give error because in java an iterface can't implements a another onterface.
+
+3.
+interface Interface1{
+	void method1();
+}
+
+interface Interface2 extends Interface1{
+	void method2()
+}
+
+interface Implementation implements Interface2{
+	void method1();
+	void method2();
+}
+ans:- This code will give error because in java an iterface can't implements a another onterface.
+
+4.
+abstract class ImplementationAbstract implements Interface2{ 
+	public void method1() { }
+}
+ ans:= Yes this code will will work becasue an abstract class can implements an interface without providing body to the methods of the interface.
+
+5.
+interface Interface3 {
+	int test;
+}
+ans:-No this code will work becauese an iterface we have to assign the value to ther varialb at the time of creation because modifire in final.
+
+6.
+interface Interface3 {
+	int test = 5;
+}
+
+ans:- Yes this code will work becauese an iterface by default give static public final modifires to the variables and value is give.
+
+7.
+interface Interface4{
+	default void print(){
+		System.out.println("default");
+	}
+}
+
+ans:- Yes this code will wrok because from JDK 1.8 we are allowed to add default and static method inside an iterface.
+
+8.
+
+interface Interface4{
+	default void print(){
+		System.out.println("default");
+	}
+}
+
+class Test implements Interface4{
+
+}
+
+Test test = new Test();
+test.print()
+
+ans:- Yes this code will work and it will print DEFAULT because there is not necessery that we have to override the default methdo of an interface inside the
+child class.
+
+9.
+interface Interface4{
+	default void print(){
+		System.out.println("default");
+	}
+}
+
+class Test1 implements Interface4{
+	public void print(){
+		System.out.println("override");
+	}
+}
+
+Test1 test = new Test1();
+test.print()
+
+ans:-This code will work because we are allow to increase the visibility of method inside the child class at the time of overriting.
+and this will print Oerride.
