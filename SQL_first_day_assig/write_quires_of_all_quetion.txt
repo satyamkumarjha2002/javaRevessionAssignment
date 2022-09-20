@@ -1,0 +1,60 @@
+1.
+SELECT name from Manufacturers;//name of the manufatrures.
+SELECT name from Products;//name of the product.
+
+2.select the name and pricce
+SELECT name and price from Products;
+
+3.
+SELECT name from Products where price<=200;
+
+4.
+SELECT * from Products WHERE price BETWEEN 60 and 120;
+
+5.
+SELECT name, price*100 from Products;
+
+6.
+SELECT avg(price) FROM Products;
+
+7.
+SELECT avg(price) FROM Products WHERE manufacturer = 2;
+
+8.
+SELECT COUNT(*) from Products WHERE price>=180;
+
+9.
+SELECT * from Products WHERE price>=180 ORDER by price DESC,name ASc ;
+
+10.
+SELECT Products.*, Manufacturers.name AS "Manufacturer_name" from Products 
+INNER JOIN Manufacturers ON Products.manufacturer = Manufacturers.Code;
+
+11.
+SELECT Products.name,Products.price, Manufacturers.name AS "Manufacturer_name" from Products 
+INNER JOIN Manufacturers ON Products.manufacturer = Manufacturers.Code;
+
+12.
+SELECT avg(price),manufacturer AS "Manufacturers_id" FROM Products GROUP by manufacturer;
+
+13.
+SELECT avg(Products.price), Manufacturers.name AS "Manufacturer_name" from Products
+INNER JOIN Manufacturers ON Products.manufacturer = Manufacturers.Code
+GROUP by Products.manufacturer;
+
+14.
+SELECT Manufacturers.name, avg(Products.price) AS "avg_price" from Products
+INNER JOIN Manufacturers ON Products.manufacturer = Manufacturers.Code
+GROUP by Products.manufacturer HAVING  avg(Products.price) >= 150
+ORDER by avg_price DESC ;
+
+15.
+SELECT name,price from Products WHERE price = (SELECT min(price) from Products);
+
+16.
+SELECT Manufacturers.code,Manufacturers.name,Products.name,Products.price from Manufacturers 
+INNER JOIN Products on Manufacturers.code = Products.manufacturer 
+WHERE Products.price in (SELECT Max(Products.price) FROM Products 
+GROUP by Products.manufacturer) 
+GROUP by Manufacturers.name 
+order by Manufacturers.code;
